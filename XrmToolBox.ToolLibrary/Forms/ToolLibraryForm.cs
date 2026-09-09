@@ -160,7 +160,7 @@ namespace XrmToolBox.ToolLibrary.Forms
                        && (cbbCategories.SelectedIndex == 0 || (((XtbPlugin)i.Tag).Categories.Contains(cbbCategories.SelectedItem.ToString())))
                        && (cbbRepositories.SelectedItem.ToString() == "-- All --" || (((XtbPlugin)i.Tag).SourceRepositoryName == cbbRepositories.SelectedItem.ToString()))
                        && (!chkFilterOpenSource.Checked || (((XtbPlugin)i.Tag).IsOpenSource ?? false) && chkFilterOpenSource.Checked && !(((XtbPlugin)i.Tag).IsFromCustomRepo))
-                       && (!chkFilterMvp.Checked || (((XtbPlugin)i.Tag).IsMvp ?? false) && chkFilterMvp.Checked && !(((XtbPlugin)i.Tag).IsFromCustomRepo))
+                       && (!chkFilterMvp.Checked || (((XtbPlugin)i.Tag).Contact.IsMvp ?? false) && chkFilterMvp.Checked && !(((XtbPlugin)i.Tag).IsFromCustomRepo))
                        && (!chkFilterTopRating.Checked || (((XtbPlugin)i.Tag).TotalFeedbackRating > settings.MostRatedMinNumberOfVotes && ((XtbPlugin)i.Tag).AverageFeedbackRating > settings.MostRatedMinRatingAverage && chkFilterTopRating.Checked) && !(((XtbPlugin)i.Tag).IsFromCustomRepo))
                        && (!chkFilterNew.Checked || (((XtbPlugin)i.Tag).FirstReleaseDate > DateTime.Now.AddMonths(-1)) && chkFilterNew.Checked)
                        && ((((XtbPlugin)i.Tag).Compatibilty != CompatibleState.Compatible) && chkIncompatible.Checked

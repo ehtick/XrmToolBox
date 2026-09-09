@@ -57,7 +57,7 @@ namespace XrmToolBox.ToolLibrary
                 {
                     if (settings.RepositoryUrl == "https://www.xrmtoolbox.com/_odata/plugins")
                     {
-                        settings.RepositoryUrl = "https://www.xrmtoolbox.com/_api/mctools_plugins";
+                        settings.RepositoryUrl = "https://www.xrmtoolbox.com/_api/mctools_plugins?$expand=mctools_ContactId($select=mctools_ismvp)";
                     }
 
                     Repositories.Add("Default", settings.RepositoryUrl);
@@ -456,6 +456,11 @@ namespace XrmToolBox.ToolLibrary
                 if (url == "https://www.xrmtoolbox.com/_odata/plugins")
                 {
                     url = "https://www.xrmtoolbox.com/_api/mctools_plugins";
+                }
+
+                if (!url.EndsWith("?$expand=mctools_ContactId($select=mctools_ismvp)"))
+                {
+                    url += "?$expand=mctools_ContactId($select=mctools_ismvp)";
                 }
 
                 Uri pathUri = new Uri(url);
