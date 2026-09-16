@@ -463,6 +463,11 @@ namespace XrmToolBox.ToolLibrary
                     url += "?$expand=mctools_ContactId($select=mctools_ismvp)";
                 }
 
+                if (url.IndexOf("statuscode") < 0)
+                {
+                    url += $"{(url.IndexOf("?") > 0 ? "&" : "?")}$filter=statuscode eq 180000000";
+                }
+
                 Uri pathUri = new Uri(url);
 
                 if (pathUri.Scheme == "http" || pathUri.Scheme == "https")
